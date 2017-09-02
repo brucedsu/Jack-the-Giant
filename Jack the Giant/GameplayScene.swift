@@ -31,8 +31,6 @@ class GameplayScene: SKScene {
     
     override func didMove(to view: SKView) {
         initializeVariables()
-        
-        getBackgrounds()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -47,7 +45,7 @@ class GameplayScene: SKScene {
             
             // print("x: \(location.x), y: \(location.y)")
             
-            if location.x > 0 {
+            if location.x > center! {
                 moveLeft = false
                 player?.animatePlayer(moveLeft: moveLeft)
             } else {
@@ -72,13 +70,17 @@ class GameplayScene: SKScene {
         
         mainCamera = self.childNode(withName: "Main Camera") as? SKCameraNode
         
+        getBackgrounds()
+        
         cloudsController.arrangeCloudsInScene(
             scene: self.scene!,
             distanceBetweenClouds: distanceBetweenClouds,
-            center: center,
+            center: center!,
             minX: minX,
             maxX: maxX,
             initialClouds: true)
+        
+        // print("The random number is \(cloudsController.randomBetweenNumbers(firstNum: 2, secondNum: 5))")
     }
     
     func getBackgrounds() {

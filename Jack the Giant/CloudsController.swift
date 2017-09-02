@@ -12,6 +12,24 @@ class CloudsController {
     
     var lastCloudPositionY = CGFloat()
     
+    func shuffle(_ cloudsArray: inout [SKSpriteNode]) -> [SKSpriteNode] {
+        for i in (0..<cloudsArray.count - 1).reversed() {
+            var j = 0
+            
+            while (j == i) {
+                j = Int(arc4random_uniform(UInt32(cloudsArray.count - 1)))
+            }
+            
+            swap(&cloudsArray[i], &cloudsArray[j])
+        }
+        
+        return cloudsArray
+    }
+    
+    func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
+    }
+    
     func createClouds() -> [SKSpriteNode] {
         var clouds = [SKSpriteNode]()
         
@@ -45,6 +63,8 @@ class CloudsController {
             clouds.append(darkCloud)
         }
         
+        clouds = shuffle(&clouds)
+        
         return clouds
     }
     
@@ -53,7 +73,7 @@ class CloudsController {
         
         if initialClouds {
             while clouds[0].name == "Dark Cloud" {
-                // shuffle the cloud array
+                clouds = shuffle(&clouds)
             }
         }
         
