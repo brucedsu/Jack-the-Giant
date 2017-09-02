@@ -56,18 +56,21 @@ class CloudsController {
             darkCloud.yScale = 0.9
             
             // Add physics bodies
-            cloud1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cloud1.size.width, height: cloud1.size.height))
+            cloud1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cloud1.size.width - 5, height: cloud1.size.height - 6))
             cloud1.physicsBody?.affectedByGravity = false
+            cloud1.physicsBody?.restitution = 0
             cloud1.physicsBody?.categoryBitMask = ColliderType.cloud
             cloud1.physicsBody?.collisionBitMask = ColliderType.player
             
-            cloud2.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cloud2.size.width, height: cloud2.size.height))
+            cloud2.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cloud2.size.width - 5, height: cloud2.size.height - 6))
             cloud2.physicsBody?.affectedByGravity = false
+            cloud2.physicsBody?.restitution = 0
             cloud2.physicsBody?.categoryBitMask = ColliderType.cloud
             cloud2.physicsBody?.collisionBitMask = ColliderType.player
 
-            cloud3.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cloud3.size.width, height: cloud3.size.height))
+            cloud3.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cloud3.size.width - 5, height: cloud3.size.height - 6))
             cloud3.physicsBody?.affectedByGravity = false
+            cloud3.physicsBody?.restitution = 0
             cloud3.physicsBody?.categoryBitMask = ColliderType.cloud
             cloud3.physicsBody?.collisionBitMask = ColliderType.player
             

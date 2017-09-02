@@ -34,8 +34,10 @@ class Player: SKSpriteNode {
             resize: true,
             restore: false)
         
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width - 50, height: self.size.height - 5))
         self.physicsBody?.affectedByGravity = true
+        self.physicsBody?.allowsRotation = false  // No rotation
+        self.physicsBody?.restitution = 0  // No bouncing
         self.physicsBody?.categoryBitMask = ColliderType.player
         self.physicsBody?.collisionBitMask = ColliderType.cloud
         self.physicsBody?.contactTestBitMask = ColliderType.darkCloudAndCollectables
