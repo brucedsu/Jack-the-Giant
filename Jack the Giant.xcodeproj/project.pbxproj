@@ -59,7 +59,8 @@
 		EB0345D21F56949C00179045 /* Options Button.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0345A81F56949C00179045 /* Options Button.png */; };
 		EB0345D31F56949C00179045 /* Quit Button.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0345A91F56949C00179045 /* Quit Button.png */; };
 		EB0345D41F56949C00179045 /* Start Game Button.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0345AA1F56949C00179045 /* Start Game Button.png */; };
-		EB6DBCA21F622BFA00AD34C9 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB6DBCA11F622BFA00AD34C9 /* MainMenu.sks */; };
+		EB6DBCA21F622BFA00AD34C9 /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB6DBCA11F622BFA00AD34C9 /* MainMenuScene.sks */; };
+		EB6DBCA41F62F3A400AD34C9 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6DBCA31F62F3A400AD34C9 /* MainMenuScene.swift */; };
 		EB8F575A1F58E785007B0F33 /* GameplayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB8F57591F58E785007B0F33 /* GameplayScene.sks */; };
 		EB8F575E1F58EA82007B0F33 /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F575D1F58EA82007B0F33 /* GameplayScene.swift */; };
 		EB8F57611F58ECAE007B0F33 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F57601F58ECAE007B0F33 /* Player.swift */; };
@@ -144,7 +145,8 @@
 		EB0345A81F56949C00179045 /* Options Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Options Button.png"; sourceTree = "<group>"; };
 		EB0345A91F56949C00179045 /* Quit Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Quit Button.png"; sourceTree = "<group>"; };
 		EB0345AA1F56949C00179045 /* Start Game Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Start Game Button.png"; sourceTree = "<group>"; };
-		EB6DBCA11F622BFA00AD34C9 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		EB6DBCA11F622BFA00AD34C9 /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
+		EB6DBCA31F62F3A400AD34C9 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		EB8F57591F58E785007B0F33 /* GameplayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameplayScene.sks; sourceTree = "<group>"; };
 		EB8F575D1F58EA82007B0F33 /* GameplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayScene.swift; sourceTree = "<group>"; };
 		EB8F57601F58ECAE007B0F33 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 		EB8F57581F58E73E007B0F33 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EB6DBCA11F622BFA00AD34C9 /* MainMenuScene.sks */,
 				EB8F57591F58E785007B0F33 /* GameplayScene.sks */,
 			);
 			name = Scenes;
@@ -398,8 +401,8 @@
 		EB8F575C1F58EA52007B0F33 /* Scene Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EB6DBCA31F62F3A400AD34C9 /* MainMenuScene.swift */,
 				EB8F575D1F58EA82007B0F33 /* GameplayScene.swift */,
-				EB6DBCA11F622BFA00AD34C9 /* MainMenu.sks */,
 			);
 			name = "Scene Classes";
 			sourceTree = "<group>";
@@ -561,7 +564,7 @@
 				EB0345BD1F56949C00179045 /* Dark Cloud.png in Resources */,
 				EB0345C31F56949C00179045 /* Game BG.png in Resources */,
 				EB0345B71F56949C00179045 /* Player 6.png in Resources */,
-				EB6DBCA21F622BFA00AD34C9 /* MainMenu.sks in Resources */,
+				EB6DBCA21F622BFA00AD34C9 /* MainMenuScene.sks in Resources */,
 				EB0345B01F56949C00179045 /* Life.png in Resources */,
 				EB0345CC1F56949C00179045 /* Easy Button.png in Resources */,
 				EB0345D11F56949C00179045 /* Music On Button.png in Resources */,
@@ -618,6 +621,7 @@
 				EB03454A1F5693C500179045 /* GameViewController.swift in Sources */,
 				EB8F57611F58ECAE007B0F33 /* Player.swift in Sources */,
 				EB0345421F5693C500179045 /* AppDelegate.swift in Sources */,
+				EB6DBCA41F62F3A400AD34C9 /* MainMenuScene.swift in Sources */,
 				EB8F57661F59C26A007B0F33 /* BGClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
