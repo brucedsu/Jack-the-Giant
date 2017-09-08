@@ -25,6 +25,8 @@ class GameplayScene: SKScene {
     
     var center: CGFloat?
     
+    private var cameraDistanceBeforeCreatingNewClouds: CGFloat = 0
+    
     let distanceBetweenClouds: CGFloat = 240
     let minX: CGFloat = -160
     let maxX: CGFloat = 160
@@ -37,6 +39,7 @@ class GameplayScene: SKScene {
         moveCamera()
         managePlayer()
         manageBackgrounds()
+        createNewClouds()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -80,6 +83,8 @@ class GameplayScene: SKScene {
             maxX: maxX,
             initialClouds: true)
         
+        cameraDistanceBeforeCreatingNewClouds = (mainCamera?.position.y)! - 400
+        
         // print("The random number is \(cloudsController.randomBetweenNumbers(firstNum: 2, secondNum: 5))")
     }
     
@@ -103,6 +108,13 @@ class GameplayScene: SKScene {
         bg1?.moveBG(camera: mainCamera!)
         bg2?.moveBG(camera: mainCamera!)
         bg3?.moveBG(camera: mainCamera!)
+    }
+    
+    func createNewClouds() {
+        if cameraDistanceBeforeCreatingNewClouds > (mainCamera?.position.y)! {
+            cameraDistanceBeforeCreatingNewClouds = (mainCamera?.position.y)! - 400
+            cloudsController.arrangeCloudsInScene(scene: self.scene!, distanceBetweenClouds: distanceBetweenClouds, center: center!, minX: minX, maxX: maxX, initialClouds: false)
+        }
     }
     
 }
