@@ -72,6 +72,7 @@
 		EB970CA61F630F2E008614AB /* OptionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB970CA51F630F2E008614AB /* OptionScene.sks */; };
 		EB970CA81F63633C008614AB /* OptionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB970CA71F63633C008614AB /* OptionScene.swift */; };
 		EB970CAB1F63A643008614AB /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB970CAA1F63A643008614AB /* GameplayController.swift */; };
+		EB970CAD1F63A9CE008614AB /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB970CAC1F63A9CE008614AB /* GameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,7 @@
 		EB970CA51F630F2E008614AB /* OptionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionScene.sks; sourceTree = "<group>"; };
 		EB970CA71F63633C008614AB /* OptionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionScene.swift; sourceTree = "<group>"; };
 		EB970CAA1F63A643008614AB /* GameplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayController.swift; sourceTree = "<group>"; };
+		EB970CAC1F63A9CE008614AB /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				EB970CAA1F63A643008614AB /* GameplayController.swift */,
+				EB970CAC1F63A9CE008614AB /* GameManager.swift */,
 			);
 			name = "Game Controllers and Managers";
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB8F575E1F58EA82007B0F33 /* GameplayScene.swift in Sources */,
+				EB970CAD1F63A9CE008614AB /* GameManager.swift in Sources */,
 				EB8F57691F5A6D3E007B0F33 /* CloudsController.swift in Sources */,
 				EB0345481F5693C500179045 /* GameScene.swift in Sources */,
 				EB970CA41F62F93A008614AB /* HighScoreScene.swift in Sources */,

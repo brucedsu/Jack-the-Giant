@@ -25,6 +25,8 @@ class MainMenuScene: SKScene {
             let location = touch.location(in: self)
             
             if self.nodes(at: location).contains(startGameButton!) {
+                GameManager.instance.gameStartedFromMainMenu = true
+                
                 let scene = GameplayScene(fileNamed: "GameplayScene")
                 scene!.scaleMode = .aspectFill
                 self.view?.presentScene(

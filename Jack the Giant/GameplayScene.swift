@@ -95,6 +95,10 @@ class GameplayScene: SKScene {
         
         getBackgrounds()
         
+        getLables()
+        
+        GameplayController.instance.initializeVariables()
+        
         cloudsController.arrangeCloudsInScene(
             scene: self.scene!,
             distanceBetweenClouds: distanceBetweenClouds,
@@ -147,6 +151,12 @@ class GameplayScene: SKScene {
             cameraDistanceBeforeCreatingNewClouds = (mainCamera?.position.y)! - 400
             cloudsController.arrangeCloudsInScene(scene: self.scene!, distanceBetweenClouds: distanceBetweenClouds, center: center!, minX: minX, maxX: maxX, initialClouds: false)
         }
+    }
+    
+    func getLables() {
+        GameplayController.instance.scoreText = mainCamera!.childNode(withName: "Score Text") as? SKLabelNode
+        GameplayController.instance.coinText = mainCamera!.childNode(withName: "Coin Score") as? SKLabelNode
+        GameplayController.instance.lifeText = mainCamera!.childNode(withName: "Life Score") as? SKLabelNode
     }
     
     func createPausePanel() {
