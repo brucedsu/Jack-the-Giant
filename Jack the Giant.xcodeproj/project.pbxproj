@@ -388,9 +388,9 @@
 			isa = PBXGroup;
 			children = (
 				EB6DBCA11F622BFA00AD34C9 /* MainMenuScene.sks */,
+				EB8F57591F58E785007B0F33 /* GameplayScene.sks */,
 				EB6DBCA51F62F54A00AD34C9 /* HighScoreScene.sks */,
 				EB970CA51F630F2E008614AB /* OptionScene.sks */,
-				EB8F57591F58E785007B0F33 /* GameplayScene.sks */,
 			);
 			name = Scenes;
 			path = "Jack the Giant";
@@ -412,8 +412,8 @@
 			isa = PBXGroup;
 			children = (
 				EB6DBCA31F62F3A400AD34C9 /* MainMenuScene.swift */,
-				EB970CA31F62F93A008614AB /* HighScoreScene.swift */,
 				EB8F575D1F58EA82007B0F33 /* GameplayScene.swift */,
+				EB970CA31F62F93A008614AB /* HighScoreScene.swift */,
 				EB970CA71F63633C008614AB /* OptionScene.swift */,
 			);
 			name = "Scene Classes";
