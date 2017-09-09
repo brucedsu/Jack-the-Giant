@@ -25,6 +25,9 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     
     var center: CGFloat?
     
+    private let playerMinX = CGFloat(-214)
+    private let playerMaxX = CGFloat(214)
+    
     private var cameraDistanceBeforeCreatingNewClouds: CGFloat = 0
     
     let distanceBetweenClouds: CGFloat = 240
@@ -170,6 +173,24 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     func managePlayer() {
         if canMove {
             player?.movePlayer(moveLeft: moveLeft)
+        }
+        
+        if (player?.position.x)! > playerMaxX {
+            player?.position.x = playerMaxX
+        }
+        
+        if (player?.position.x)! < playerMinX {
+            player?.position.x = playerMinX
+        }
+        
+        if (player?.position.y)! - (player?.size.height)! * 3.7 > (mainCamera?.position.y)! {
+            print("The player is out of bounds up")
+            self.scene?.isPaused = true
+        }
+        
+        if (player?.position.y)! + (player?.size.height)! * 3.7 < (mainCamera?.position.y)! {
+            print("The player is out of bounds down")
+            self.scene?.isPaused = true
         }
     }
     
