@@ -74,6 +74,7 @@
 		EB970CAB1F63A643008614AB /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB970CAA1F63A643008614AB /* GameplayController.swift */; };
 		EB970CAD1F63A9CE008614AB /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB970CAC1F63A9CE008614AB /* GameManager.swift */; };
 		EB970CAF1F63BA51008614AB /* CollectablesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB970CAE1F63BA51008614AB /* CollectablesController.swift */; };
+		EBA2C2FE1F64599100061242 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA2C2FD1F64599100061242 /* GameData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		EB970CAA1F63A643008614AB /* GameplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayController.swift; sourceTree = "<group>"; };
 		EB970CAC1F63A9CE008614AB /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		EB970CAE1F63BA51008614AB /* CollectablesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectablesController.swift; sourceTree = "<group>"; };
+		EBA2C2FD1F64599100061242 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +407,7 @@
 		EB8F575B1F58EA25007B0F33 /* Game Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EBA2C2FC1F64598200061242 /* Game Data Class */,
 				EB970CA91F638ED0008614AB /* Game Controllers and Managers */,
 				EB8F57671F5A6D19007B0F33 /* Clouds and Collectable Controllers */,
 				EB8F57641F59C23A007B0F33 /* Background Class */,
@@ -458,6 +461,14 @@
 				EB970CAC1F63A9CE008614AB /* GameManager.swift */,
 			);
 			name = "Game Controllers and Managers";
+			sourceTree = "<group>";
+		};
+		EBA2C2FC1F64598200061242 /* Game Data Class */ = {
+			isa = PBXGroup;
+			children = (
+				EBA2C2FD1F64599100061242 /* GameData.swift */,
+			);
+			name = "Game Data Class";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -657,6 +668,7 @@
 				EB0345421F5693C500179045 /* AppDelegate.swift in Sources */,
 				EB6DBCA41F62F3A400AD34C9 /* MainMenuScene.swift in Sources */,
 				EB8F57661F59C26A007B0F33 /* BGClass.swift in Sources */,
+				EBA2C2FE1F64599100061242 /* GameData.swift in Sources */,
 				EB970CAB1F63A643008614AB /* GameplayController.swift in Sources */,
 				EB970CA81F63633C008614AB /* OptionScene.swift in Sources */,
 			);
