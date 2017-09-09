@@ -16,7 +16,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
             if let scene = MainMenuScene(fileNamed: "MainMenuScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
@@ -33,14 +32,13 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
         
-        for family: String in UIFont.familyNames
-        {
-            print("\(family)")
-            for names: String in UIFont.fontNames(forFamilyName: family)
-            {
-                print("== \(names)")
-            }
-        }
+        // Print all available fonts
+//        for family: String in UIFont.familyNames {
+//            print("\(family)")
+//            for names: String in UIFont.fontNames(forFamilyName: family) {
+//                print("== \(names)")
+//            }
+//        }
     }
 
     override var shouldAutorotate: Bool {

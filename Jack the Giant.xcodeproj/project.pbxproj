@@ -70,6 +70,7 @@
 		EB8F57691F5A6D3E007B0F33 /* CloudsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F57681F5A6D3E007B0F33 /* CloudsController.swift */; };
 		EB970CA41F62F93A008614AB /* HighScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB970CA31F62F93A008614AB /* HighScoreScene.swift */; };
 		EB970CA61F630F2E008614AB /* OptionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB970CA51F630F2E008614AB /* OptionScene.sks */; };
+		EB970CA81F63633C008614AB /* OptionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB970CA71F63633C008614AB /* OptionScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		EB8F57681F5A6D3E007B0F33 /* CloudsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudsController.swift; sourceTree = "<group>"; };
 		EB970CA31F62F93A008614AB /* HighScoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreScene.swift; sourceTree = "<group>"; };
 		EB970CA51F630F2E008614AB /* OptionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionScene.sks; sourceTree = "<group>"; };
+		EB970CA71F63633C008614AB /* OptionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +414,7 @@
 				EB6DBCA31F62F3A400AD34C9 /* MainMenuScene.swift */,
 				EB970CA31F62F93A008614AB /* HighScoreScene.swift */,
 				EB8F575D1F58EA82007B0F33 /* GameplayScene.swift */,
+				EB970CA71F63633C008614AB /* OptionScene.swift */,
 			);
 			name = "Scene Classes";
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				EB0345421F5693C500179045 /* AppDelegate.swift in Sources */,
 				EB6DBCA41F62F3A400AD34C9 /* MainMenuScene.swift in Sources */,
 				EB8F57661F59C26A007B0F33 /* BGClass.swift in Sources */,
+				EB970CA81F63633C008614AB /* OptionScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
