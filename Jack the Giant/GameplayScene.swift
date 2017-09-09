@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameplayScene: SKScene {
+class GameplayScene: SKScene, SKPhysicsContactDelegate {
     
     var cloudsController = CloudsController()
     
@@ -43,6 +43,41 @@ class GameplayScene: SKScene {
         managePlayer()
         manageBackgrounds()
         createNewClouds()
+        
+        player?.updateScore()
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody = SKPhysicsBody()
+        var secondBody = SKPhysicsBody()
+        
+        if contact.bodyA.node?.name == "Player" {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if firstBody.node?.name == "Player" && secondBody.node?.name == "Life" {
+            // Play the sound for the life
+            
+            // Increment the life score
+            GameplayController.instance.incrementLife()
+            
+            // Remove the life
+            secondBody.node?.removeFromParent()
+        } else if firstBody.node?.name == "Player" && secondBody.node?.name == "Coin" {
+            // Play the sound for the coin
+            
+            // Increment the coin score
+            GameplayController.instance.incrementCoin()
+            
+            // Remove the coin
+            secondBody.node?.removeFromParent()
+        } else if firstBody.node?.name == "Player" && secondBody.node?.name == "Dark Cloud" {
+            // Kill the player
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,6 +121,8 @@ class GameplayScene: SKScene {
     }
     
     func initializeVariables() {
+        physicsWorld.contactDelegate = self
+        
         center = self.scene!.size.width / self.scene!.size.height
         
         player = self.childNode(withName: "Player") as? Player
