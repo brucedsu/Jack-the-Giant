@@ -84,6 +84,24 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
         } else if firstBody.node?.name == "Player" && secondBody.node?.name == "Dark Cloud" {
             // Kill the player
+            self.scene?.isPaused = true
+            
+            GameplayController.instance.life! -= 1
+            
+            if GameplayController.instance.life! >= 0 {
+                GameplayController.instance.lifeText?.text = "x\(GameplayController.instance.life!)"
+            } else {
+                // Show end score panel
+            }
+            
+            firstBody.node?.removeFromParent()
+            
+            Timer.scheduledTimer(
+                timeInterval: 1.5,
+                target: self,
+                selector: #selector(GameplayScene.playerDied),
+                userInfo: nil,
+                repeats: false)
         }
     }
     
@@ -191,12 +209,44 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         
         if (player?.position.y)! - (player?.size.height)! * 3.7 > (mainCamera?.position.y)! {
             print("The player is out of bounds up")
+            
             self.scene?.isPaused = true
+            
+            GameplayController.instance.life! -= 1
+            
+            if GameplayController.instance.life! >= 0 {
+                GameplayController.instance.lifeText?.text = "x\(GameplayController.instance.life!)"
+            } else {
+                // Show end score panel
+            }
+            
+            Timer.scheduledTimer(
+                timeInterval: 1.5,
+                target: self,
+                selector: #selector(GameplayScene.playerDied),
+                userInfo: nil,
+                repeats: false)
         }
         
         if (player?.position.y)! + (player?.size.height)! * 3.7 < (mainCamera?.position.y)! {
             print("The player is out of bounds down")
+            
             self.scene?.isPaused = true
+            
+            GameplayController.instance.life! -= 1
+            
+            if GameplayController.instance.life! >= 0 {
+                GameplayController.instance.lifeText?.text = "x\(GameplayController.instance.life!)"
+            } else {
+                // Show end score panel
+            }
+            
+            Timer.scheduledTimer(
+                timeInterval: 1.5,
+                target: self,
+                selector: #selector(GameplayScene.playerDied),
+                userInfo: nil,
+                repeats: false)
         }
     }
     
@@ -288,6 +338,61 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
             acceleration = 0.003
             cameraSpeed = 2.5
             maxSpeed = 8
+        }
+    }
+    
+    func playerDied() {
+        if GameplayController.instance.life! >= 0 {
+            GameManager.instance.gameRestartedPlayerDied = true
+            
+            let scene = GameplayScene(fileNamed: "GameplayScene")
+            scene!.scaleMode = .aspectFill
+            self.view?.presentScene(
+                scene!,
+                transition: SKTransition.crossFade(withDuration: 1))
+        } else {
+            if GameManager.instance.getEasyDifficulty() {
+                let highScore = GameManager.instance.getEasyDifficultyScore()
+                let coinScore = GameManager.instance.getEasyDifficultyCoinScore()
+                
+                if highScore < GameplayController.instance.score! {
+                    GameManager.instance.setEasyDifficultyScore(GameplayController.instance.score!)
+                }
+                
+                if coinScore < GameplayController.instance.coin! {
+                    GameManager.instance.setEasyDifficultyCoinScore(GameplayController.instance.coin!)
+                }
+            } else if GameManager.instance.getMediumDifficulty() {
+                let highScore = GameManager.instance.getMediumDifficultyScore()
+                let coinScore = GameManager.instance.getMediumDifficultyCoinScore()
+                
+                if highScore < GameplayController.instance.score! {
+                    GameManager.instance.setMediumDifficultyScore(GameplayController.instance.score!)
+                }
+                
+                if coinScore < GameplayController.instance.coin! {
+                    GameManager.instance.setMediumDifficultyCoinScore(GameplayController.instance.coin!)
+                }
+            } else if GameManager.instance.getHardDifficulty() {
+                let highScore = GameManager.instance.getHardDifficultyScore()
+                let coinScore = GameManager.instance.getHardDifficultyCoinScore()
+                
+                if highScore < GameplayController.instance.score! {
+                    GameManager.instance.setHardDifficultyScore(GameplayController.instance.score!)
+                }
+                
+                if coinScore < GameplayController.instance.coin! {
+                    GameManager.instance.setHardDifficultyCoinScore(GameplayController.instance.coin!)
+                }
+            }
+            
+            GameManager.instance.saveData()
+            
+            let scene = MainMenuScene(fileNamed: "MainMenuScene")
+            scene!.scaleMode = .aspectFill
+            self.view?.presentScene(
+                scene!,
+                transition: SKTransition.crossFade(withDuration: 1))
         }
     }
     
