@@ -18,6 +18,8 @@ class MainMenuScene: SKScene {
         startGameButton = self.childNode(withName: "Start Game") as? SKSpriteNode
         highScoreButton = self.childNode(withName: "High Score") as? SKSpriteNode
         optionButton = self.childNode(withName: "Options") as? SKSpriteNode
+        
+        GameManager.instance.initializeGameData()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
