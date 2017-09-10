@@ -14,10 +14,16 @@ class MainMenuScene: SKScene {
     var highScoreButton: SKSpriteNode?
     var optionButton: SKSpriteNode?
     
+    var musicButton: SKSpriteNode?
+    private let musicOn = SKSpriteNode(imageNamed: "Music On Button")
+    private let musicOff = SKSpriteNode(imageNamed: "Music Off Button")
+    
     override func didMove(to view: SKView) {
         startGameButton = self.childNode(withName: "Start Game") as? SKSpriteNode
         highScoreButton = self.childNode(withName: "High Score") as? SKSpriteNode
         optionButton = self.childNode(withName: "Options") as? SKSpriteNode
+        
+        musicButton = self.childNode(withName: "Music Button") as? SKSpriteNode
         
         GameManager.instance.initializeGameData()
     }
