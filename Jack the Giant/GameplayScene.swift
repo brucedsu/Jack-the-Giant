@@ -25,6 +25,10 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     
     var center: CGFloat?
     
+    private var acceleration = CGFloat()
+    private var cameraSpeed = CGFloat()
+    private var maxSpeed =  CGFloat()
+    
     private let playerMinX = CGFloat(-214)
     private let playerMaxX = CGFloat(214)
     
@@ -162,6 +166,8 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         scoreText.fontSize = 36
         
         pauseButton = mainCamera!.childNode(withName: "Pause Button") as? SKSpriteNode
+        
+        setCameraSpeed()
     }
     
     func getBackgrounds() {
@@ -195,7 +201,13 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func moveCamera() {
-        mainCamera?.position.y -= 3
+        cameraSpeed += acceleration
+        
+        if cameraSpeed > maxSpeed {
+            cameraSpeed = maxSpeed
+        }
+        
+        mainCamera?.position.y -= cameraSpeed
     }
     
     func manageBackgrounds() {
@@ -220,7 +232,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
                 let childNameComponents = child.name?.components(separatedBy: " ")
                 
                 if childNameComponents?[0] != "BG" {
-                    print("The child that was removed is \(child.name!)")
+                    // print("The child that was removed is \(child.name!)")
                     child.removeFromParent()
                 }
             }
@@ -261,6 +273,22 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         pausePanel?.addChild(quitButton)
         
         self.mainCamera?.addChild(pausePanel!)
+    }
+    
+    private func setCameraSpeed() {
+        if GameManager.instance.getEasyDifficulty() == true {
+            acceleration = 0.001
+            cameraSpeed = 1.5
+            maxSpeed = 4
+        } else if GameManager.instance.getMediumDifficulty() == true {
+            acceleration = 0.002
+            cameraSpeed = 2.0
+            maxSpeed = 6
+        } else if GameManager.instance.getHardDifficulty() == true {
+            acceleration = 0.003
+            cameraSpeed = 2.5
+            maxSpeed = 8
+        }
     }
     
 }
