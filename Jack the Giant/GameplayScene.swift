@@ -92,6 +92,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
                 GameplayController.instance.lifeText?.text = "x\(GameplayController.instance.life!)"
             } else {
                 // Show end score panel
+                createEndScorePanel()
             }
             
             firstBody.node?.removeFromParent()
@@ -218,6 +219,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
                 GameplayController.instance.lifeText?.text = "x\(GameplayController.instance.life!)"
             } else {
                 // Show end score panel
+                createEndScorePanel()
             }
             
             Timer.scheduledTimer(
@@ -239,6 +241,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
                 GameplayController.instance.lifeText?.text = "x\(GameplayController.instance.life!)"
             } else {
                 // Show end score panel
+                createEndScorePanel()
             }
             
             Timer.scheduledTimer(
@@ -323,6 +326,38 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         pausePanel?.addChild(quitButton)
         
         self.mainCamera?.addChild(pausePanel!)
+    }
+    
+    func createEndScorePanel() {
+        let endScorePanel = SKSpriteNode(imageNamed: "Show Score")
+        let scoreLabel = SKLabelNode(fontNamed: "Blow")
+        let coinLabel = SKLabelNode(fontNamed: "Blow")
+
+        endScorePanel.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        endScorePanel.zPosition = 8
+        endScorePanel.xScale = 1.5
+        endScorePanel.yScale = 1.5
+        
+        scoreLabel.fontSize = 50
+        scoreLabel.zPosition = 7
+        
+        coinLabel.fontSize = 50
+        coinLabel.zPosition = 7
+        
+        scoreLabel.text = "\(GameplayController.instance.score!)"
+        coinLabel.text = "\(GameplayController.instance.coin!)"
+        
+        endScorePanel.position = CGPoint(
+            x: (mainCamera?.frame.size.width)! / 2,
+            y: (mainCamera?.frame.size.height)! / 3)
+        
+        scoreLabel.position = CGPoint(x: endScorePanel.position.x - 60, y: endScorePanel.position.y + 10)
+        coinLabel.position = CGPoint(x: endScorePanel.position.x - 60, y: endScorePanel.position.y - 105)
+        
+        endScorePanel.addChild(scoreLabel)
+        endScorePanel.addChild(coinLabel)
+        
+        mainCamera?.addChild(endScorePanel)
     }
     
     private func setCameraSpeed() {
