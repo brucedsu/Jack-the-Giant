@@ -15,8 +15,8 @@ class MainMenuScene: SKScene {
     var optionButton: SKSpriteNode?
     
     var musicButton: SKSpriteNode?
-    private let musicOn = SKSpriteNode(imageNamed: "Music On Button")
-    private let musicOff = SKSpriteNode(imageNamed: "Music Off Button")
+    private let musicOnTexture = SKTexture(imageNamed: "Music On Button")
+    private let musicOffTexture = SKTexture(imageNamed: "Music Off Button")
     
     override func didMove(to view: SKView) {
         startGameButton = self.childNode(withName: "Start Game") as? SKSpriteNode
@@ -26,6 +26,8 @@ class MainMenuScene: SKScene {
         musicButton = self.childNode(withName: "Music Button") as? SKSpriteNode
         
         GameManager.instance.initializeGameData()
+        
+        setMusic()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -52,8 +54,38 @@ class MainMenuScene: SKScene {
                 self.view?.presentScene(
                     scene!,
                     transition: SKTransition.flipHorizontal(withDuration: 1))
+            } else if self.nodes(at: location).contains(musicButton!) {
+                handleMusicButton()
             }
         }
+    }
+    
+    private func setMusic() {
+        if GameManager.instance.getIsMusicOn() {
+            if !AudioManager.instance.isAudioPlayerInitialized() {
+                AudioManager.instance.playBGMusic()
+            }
+            
+            musicButton?.texture = musicOnTexture
+        } else {
+            musicButton?.texture = musicOffTexture
+        }
+    }
+    
+    private func handleMusicButton() {
+        if GameManager.instance.getIsMusicOn() {
+            // The music is playing, turn it off
+            AudioManager.instance.stopBGMusic()
+            GameManager.instance.setIsMusicOn(false)
+            musicButton?.texture = musicOffTexture
+        } else {
+            // The music is not playing, turn it on
+            AudioManager.instance.playBGMusic()
+            GameManager.instance.setIsMusicOn(true)
+            musicButton?.texture = musicOnTexture
+        }
+        
+        GameManager.instance.saveData()
     }
     
 }

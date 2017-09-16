@@ -16,7 +16,7 @@ class AudioManager {
     
     private var audioPlayer: AVAudioPlayer?
     
-    func playerBGMusic() {
+    func playBGMusic() {
         let url = Bundle.main.url(forResource: "Background music", withExtension: "mp3")
         
         var err: Error?
@@ -38,6 +38,10 @@ class AudioManager {
         if (audioPlayer?.isPlaying)! {
             audioPlayer?.stop()
         }
+    }
+    
+    func isAudioPlayerInitialized() -> Bool {
+        return audioPlayer != nil
     }
     
 }
