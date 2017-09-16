@@ -68,7 +68,9 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         
         if firstBody.node?.name == "Player" && secondBody.node?.name == "Life" {
             // Play the sound for the life
-            self.run(SKAction.playSoundFileNamed("Life Sound.wav", waitForCompletion: false))
+            if GameManager.instance.getIsMusicOn() {
+                self.run(SKAction.playSoundFileNamed("Life Sound.wav", waitForCompletion: false))
+            }
             
             // Increment the life score
             GameplayController.instance.incrementLife()
@@ -77,7 +79,9 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
         } else if firstBody.node?.name == "Player" && secondBody.node?.name == "Coin" {
             // Play the sound for the coin
-            self.run(SKAction.playSoundFileNamed("Coin Sound.wav", waitForCompletion: false))
+            if GameManager.instance.getIsMusicOn() {
+                self.run(SKAction.playSoundFileNamed("Coin Sound.wav", waitForCompletion: false))
+            }
             
             // Increment the coin score
             GameplayController.instance.incrementCoin()
@@ -114,7 +118,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
             
             let nodes = self.nodes(at: location)
             
-            if self.nodes(at: location).contains(pauseButton!) {
+            if self.nodes(at: location).contains(pauseButton!) && self.scene?.isPaused == false {
                 self.scene?.isPaused = true
                 createPausePanel()
             } else if nodes.count > 0 && nodes[0].name == "Resume" {
@@ -170,6 +174,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
             center: center!,
             minX: minX,
             maxX: maxX,
+            player: player!,
             initialClouds: true)
         
         cameraDistanceBeforeCreatingNewClouds = (mainCamera?.position.y)! - 400
@@ -275,7 +280,14 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         if cameraDistanceBeforeCreatingNewClouds > (mainCamera?.position.y)! {
             cameraDistanceBeforeCreatingNewClouds = (mainCamera?.position.y)! - 400
             
-            cloudsController.arrangeCloudsInScene(scene: self.scene!, distanceBetweenClouds: distanceBetweenClouds, center: center!, minX: minX, maxX: maxX, initialClouds: false)
+            cloudsController.arrangeCloudsInScene(
+                scene: self.scene!,
+                distanceBetweenClouds: distanceBetweenClouds,
+                center: center!,
+                minX: minX,
+                maxX: maxX,
+                player: player!,
+                initialClouds: false)
             
             checkForChildrenOutOffScreen()
         }
